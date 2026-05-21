@@ -1,0 +1,58 @@
+{
+  "name": "feishu-claude-bot",
+  "version": "0.1.0",
+  "type": "module",
+  "private": false,
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "dev:server": "tsx src/index.server.ts",
+    "build": "tsc && npm run build:web",
+    "build:web": "cd web && npm run build",
+    "build:server": "tsc -p tsconfig.server.json",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.server.json --noEmit",
+    "start": "node dist/index.js",
+    "bot": "bash scripts/bot.sh start",
+    "bot:stop": "bash scripts/bot.sh stop",
+    "bot:status": "bash scripts/bot.sh status",
+    "bot:log": "bash scripts/bot.sh log",
+    "bot:restart": "bash scripts/bot.sh restart",
+    "setup": "bash scripts/setup.sh"
+  },
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@larksuiteoapi/node-sdk": "^1.58.0",
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "@types/http-proxy": "^1.17.17",
+    "better-sqlite3": "^12.6.2",
+    "dotenv": "^16.4.0",
+    "express": "^5.2.1",
+    "ffmpeg-static": "^5.3.0",
+    "figma-developer-mcp": "^0.8.0",
+    "framer-api": "^0.1.2",
+    "http-proxy": "^1.18.1",
+    "imapflow": "^1.2.10",
+    "mailparser": "^3.9.3",
+    "nodemailer": "^8.0.1",
+    "pino": "^9.0.0",
+    "pino-pretty": "^11.0.0",
+    "puppeteer": "^24.40.0",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.34.5",
+    "ws": "^8.20.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/express": "^5.0.6",
+    "@types/mailparser": "^3.4.6",
+    "@types/node": "^22.0.0",
+    "@types/nodemailer": "^7.0.11",
+    "@types/qrcode": "^1.5.6",
+    "@types/ws": "^8.18.1",
+    "sass-loader": "^8.0.2",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

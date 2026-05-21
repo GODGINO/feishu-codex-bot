@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { width: 340px; font-family: -apple-system, sans-serif; padding: 16px; background: #f8fafc; }
+    h1 { font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 12px; }
+    .status { display: flex; align-items: center; gap: 6px; margin-bottom: 12px; font-size: 12px; color: #64748b; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .dot-off { background: #94a3b8; }
+    .dot-connecting { background: #f59e0b; animation: pulse 1s infinite; }
+    .dot-on { background: #22c55e; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    .session-list { margin-bottom: 12px; }
+    .session-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 10px; background: white; border: 1px solid #e2e8f0; border-radius: 6px;
+      margin-bottom: 4px; font-size: 13px;
+    }
+    .session-item .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #1e293b; font-weight: 500; }
+    .session-item .tag {
+      font-size: 10px; font-weight: 600; padding: 1px 5px; border-radius: 3px; margin-left: 6px; flex-shrink: 0;
+    }
+    .tag-dm { background: #dcfce7; color: #166534; }
+    .tag-group { background: #dbeafe; color: #1e40af; }
+    .session-item .remove {
+      background: none; border: none; cursor: pointer; color: #94a3b8; font-size: 16px;
+      padding: 0 4px; line-height: 1; margin-left: 6px; flex-shrink: 0;
+    }
+    .session-item .remove:hover { color: #ef4444; }
+    .empty-hint { font-size: 12px; color: #94a3b8; text-align: center; padding: 12px 0; }
+
+    .add-row { display: flex; gap: 6px; margin-bottom: 12px; }
+    .add-row input {
+      flex: 1; padding: 8px 10px; border: 1px solid #e2e8f0; border-radius: 6px;
+      font-size: 13px; outline: none;
+    }
+    .add-row input:focus { border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59,130,246,0.1); }
+    .add-row button {
+      padding: 8px 14px; border: 1px solid #e2e8f0; border-radius: 6px; background: white;
+      font-size: 13px; font-weight: 600; cursor: pointer; color: #3b82f6; white-space: nowrap;
+    }
+    .add-row button:hover { background: #eff6ff; }
+    .add-row button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .error-msg { font-size: 11px; color: #ef4444; margin-bottom: 8px; }
+
+    button.main-btn {
+      width: 100%; padding: 10px; border: none; border-radius: 6px;
+      font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.15s;
+    }
+    .btn-connect { background: #3b82f6; color: white; }
+    .btn-connect:hover { background: #2563eb; }
+    .btn-connect:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-disconnect { background: #ef4444; color: white; }
+    .btn-disconnect:hover { background: #dc2626; }
+  </style>
+</head>
+<body>
+  <h1>Sigma Remote Browser</h1>
+
+  <div class="status">
+    <span id="dot" class="dot dot-off"></span>
+    <span id="statusText">Disconnected</span>
+  </div>
+
+  <div id="sessionList" class="session-list"></div>
+
+  <div class="add-row">
+    <input id="newKey" type="text" placeholder="group_oc_xxx or dm_ou_xxx">
+    <button id="addBtn">Add</button>
+  </div>
+
+  <div id="errorMsg" class="error-msg" style="display:none"></div>
+
+  <button id="connectBtn" class="main-btn btn-connect">Connect</button>
+  <button id="disconnectBtn" class="main-btn btn-disconnect" style="display:none">Disconnect</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+node_modules/
+dist/
+.env
+sessions/
+*.log
+.bot.pid
+.bot.log
+port-allocations.json
+process-pool-state.json
+.claude/settings.local.json
+.DS_Store
+.cf-tunnel.pid
+.cf-tunnel.url
+.cf-tunnel.log
+.chat-name-cache.json
+.name-cache.json
+sessions.json
+sigma-browser-extension.zip
+sigma-terminal.dmg
+sigma-terminal-win.zip
+sigma-terminal/node_modules/
+sigma-terminal/dist/
+sigma-terminal/release/
+_email_processor/
+web/dist/
+/members/
+/shared/
+usage-stats.json
+
+# ── Deployment & private config (never commit real domains, secrets, tokens) ──
+# Use these patterns for any file that contains your specific deployment values.
+*.local.*
+*.private.*
+deployment.config.*
+config.deployment.*
+.env.*
+!.env.example
+
+# Server build output (Phase 0 added tsconfig.server.json → dist-server/)
+dist-server/
+
+# ── Sigma Claude Switcher (account auto-rotation) ──
+# The installed copy lives at ~/.sigma-switcher (outside the repo) and is never tracked.
+# Inside the repo: never commit real config.yaml (IMAP password, real emails) — only
+# config.example.yaml ships. Also skip the local venv and runtime artifacts.
+sigma-switcher/daemon/config.yaml
+sigma-switcher/daemon/venv/
+sigma-switcher/daemon/state.json
+sigma-switcher/daemon/logs/
+.switcher.pid
+.switcher.log
+

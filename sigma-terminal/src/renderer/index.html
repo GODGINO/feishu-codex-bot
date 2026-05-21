@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- DEPLOYMENT: set connect-src to your Sigma server URL before packaging. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; connect-src https://your-sigma-server.example.com">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Sigma Terminal</h1>
+
+  <div class="status">
+    <span id="dot" class="dot dot-off"></span>
+    <span id="statusText">Disconnected</span>
+  </div>
+
+  <div id="sessionList" class="session-list"></div>
+
+  <div class="add-row">
+    <input id="newKey" type="text" placeholder="group_oc_xxx or dm_ou_xxx">
+    <button id="addBtn">Add</button>
+  </div>
+
+  <div id="errorMsg" class="error-msg" style="display:none"></div>
+
+  <button id="connectBtn" class="main-btn btn-connect">Connect</button>
+  <button id="disconnectBtn" class="main-btn btn-disconnect" style="display:none">Disconnect</button>
+
+  <div class="footer">
+    <span id="statsText"></span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

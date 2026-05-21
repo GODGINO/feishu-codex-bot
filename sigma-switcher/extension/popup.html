@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sigma Switcher</title>
+  <style>
+    body { font: 13px -apple-system, sans-serif; width: 320px; padding: 12px; }
+    h1 { font-size: 14px; margin: 0 0 8px; }
+    .row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #eee; }
+    .row b { color: #555; }
+    .ok { color: #0a8; font-weight: 600; }
+    .bad { color: #c33; font-weight: 600; }
+    button { margin-top: 8px; padding: 6px 10px; }
+    pre { font-size: 11px; max-height: 120px; overflow: auto; background: #f6f6f6; padding: 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>🔄 Sigma Claude Switcher</h1>
+  <div class="row"><b>Python server:</b> <span id="server">checking…</span></div>
+  <div class="row"><b>Last poll:</b> <span id="last">—</span></div>
+  <div class="row"><b>Last command:</b> <span id="cmd">—</span></div>
+  <button id="ping">Ping Python now</button>
+  <button id="usage">Probe Usage DOM</button>
+  <pre id="out">(output)</pre>
+  <script src="popup.js"></script>
+</body>
+</html>

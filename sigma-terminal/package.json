@@ -1,0 +1,24 @@
+{
+  "name": "sigma-terminal",
+  "version": "1.0.0",
+  "description": "Remote terminal control for Feishu Claude Bot — execute commands and edit code on your Mac",
+  "main": "dist/main/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "electron .",
+    "pack": "electron-builder --mac",
+    "dev": "tsc && electron ."
+  },
+  "dependencies": {
+    "@nut-tree-fork/nut-js": "^4.2.6",
+    "electron-store": "^8.2.0",
+    "fast-glob": "^3.3.3",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.5.14",
+    "electron": "^33.3.1",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.7.3"
+  }
+}

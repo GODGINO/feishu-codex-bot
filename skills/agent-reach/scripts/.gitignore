@@ -1,0 +1,3 @@
+# Per-session cookies, never commit
+bilibili-cookies.txt
+.env

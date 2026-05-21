@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Blog | Wanda Coach</title>
+  <link rel="stylesheet" href="https://www.wandacoach.com/web/css/style.css?ver=20260311074959">
+  <style>
+    body { background: #f8f7f3; }
+    .header { display: none !important; }
+    #wc-header-desktop { background: #f4f4f4; }
+    #wc-header-desktop .wch-top { background: #191919; height: 30px; display: flex; align-items: center; justify-content: flex-end; padding: 0 32px; gap: 20px; }
+    #wc-header-desktop .wch-top a { color: #b0a070; font-size: 12px; text-decoration: none; font-weight: 600; letter-spacing: .5px; }
+    #wc-header-desktop .wch-top a:hover { color: #d6bf65; }
+    #wc-header-desktop .wch-main { display: flex; align-items: center; padding: 0 32px; height: 56px; gap: 32px; }
+    #wc-header-desktop .wch-logo { height: 40px; display: block; }
+    #wc-header-desktop .wch-nav { display: flex; align-items: center; font-size: 12px; color: #787878; letter-spacing: 1.5px; }
+    #wc-header-desktop .wch-nav a { color: #787878; text-decoration: none; padding: 0 8px; }
+    #wc-header-desktop .wch-nav a:hover { color: #bca71b; }
+    #wc-header-desktop .wch-nav span { color: #ccc; }
+    #wc-header-mobile { display: none; background: #f4f4f4; border-bottom: 1px solid #ddd; padding: 0 16px; height: 54px; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 500; box-shadow: 0 1px 6px rgba(0,0,0,.1); }
+    #wc-header-mobile img { height: 34px; }
+    #wc-header-mobile .wch-book { background: #d6bf65; color: #191919 !important; font-weight: 700; font-size: 13px; padding: 8px 14px; border-radius: 5px; text-decoration: none; }
+    @media (max-width: 767px) {
+      #wc-header-desktop { display: none !important; }
+      #wc-header-mobile { display: flex !important; }
+      .blog-grid { grid-template-columns: 1fr !important; padding: 24px 16px 60px !important; }
+    }
+
+    /* Hero */
+    .blog-hero {
+      background: #191919;
+      text-align: center;
+      padding: 56px 24px 52px;
+    }
+    .blog-hero .eyebrow {
+      color: #d6bf65;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .blog-hero h1 {
+      color: #fff;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 14px;
+      line-height: 1.2;
+      letter-spacing: -.02em;
+    }
+    .blog-hero p {
+      color: #b0a070;
+      max-width: 480px;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .gold-bar { height: 3px; background: linear-gradient(90deg, #cbae3d, #d6bf65, #cbae3d); }
+
+    /* Cards grid */
+    .blog-grid {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      text-decoration: none;
+      border: 1px solid #e8e0c8;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      transition: box-shadow .2s, transform .2s;
+    }
+    .blog-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .blog-card .cover {
+      height: 200px;
+      overflow: hidden;
+      background: #191919;
+    }
+    .blog-card .cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      transition: transform .3s;
+    }
+    .blog-card:hover .cover img { transform: scale(1.04); }
+    .blog-card .body {
+      padding: 18px 20px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-card .route-tag {
+      display: inline-block;
+      background: #fffdf0;
+      color: #8a7200;
+      border: 1px solid #e8d87a;
+      border-radius: 4px;
+      padding: 2px 9px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: .3px;
+    }
+    .blog-card h2 {
+      color: #1a1a1a;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .blog-card p {
+      color: #787878;
+      font-size: 0.875rem;
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 14px;
+    }
+    .blog-card .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #f0ece0;
+      padding-top: 12px;
+      font-size: 12px;
+    }
+    .blog-card .meta .stats { display: flex; gap: 12px; }
+    .blog-card .meta .price { color: #464646; font-weight: 600; }
+    .blog-card .meta .time { color: #999; }
+    .blog-card .meta .cta { color: #bca71b; font-weight: 700; }
+    .blog-card:hover .meta .cta { color: #d6bf65; }
+
+    .blog-note {
+      text-align: center;
+      color: #ababab;
+      font-size: 12px;
+      margin-top: 0;
+      padding-bottom: 40px;
+    }
+  </style>
+<style>
+/* ── Responsive header ── */
+.wc-mobile-header {
+  display: none;
+  background: #f4f4f4;
+  border-bottom: 1px solid #ddd;
+  padding: 0 16px;
+  height: 56px;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+.wc-mobile-header img { height: 36px; }
+.wc-mobile-header .wc-book-btn {
+  background: #d6bf65;
+  color: #191919 !important;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 7px 14px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.wc-mobile-header .wc-book-btn:hover { background: #e8d47a; text-decoration: none; }
+@media (max-width: 767px) {
+  .header { display: none !important; }
+  .wc-mobile-header { display: flex !important; }
+}
+
+/* ── Responsive footer ── */
+@media (max-width: 767px) {
+  .foot .footc ul { display: block; }
+  .foot .footc ul li { width: 100%; padding: 0 16px; border-bottom: 1px solid #333; }
+  .foot .footc ul li:last-child { border-bottom: none; }
+  .foot { padding: 0 0 16px; }
+}
+</style></head>
+<body>
+<div id="wc-header-mobile">
+  <a href="https://www.wandacoach.com">
+    <img src="https://www.wandacoach.com/web/img/logo.png" alt="Wanda Coach">
+  </a>
+  <a href="https://www.wandacoach.com/search-bus" class="wch-book">Book Now</a>
+</div>
+<div id="wc-header-desktop">
+  <div class="wch-top">
+    <a href="https://www.wandacoach.com/search-bus">BOOK NOW</a>
+    <a href="https://www.wandacoach.com/my-booking">MY BOOKING</a>
+  </div>
+  <div class="wch-main">
+    <a href="https://www.wandacoach.com">
+      <img src="https://www.wandacoach.com/web/img/logo.png" class="wch-logo" alt="Wanda Coach">
+    </a>
+    <nav class="wch-nav">
+      <a href="https://www.wandacoach.com/">HOME</a>
+      <span>|</span><a href="https://www.wandacoach.com/bus-schedules">BUS SCHEDULES</a>
+      <span>|</span><a href="https://www.wandacoach.com/bus-stations">BUS STATIONS</a>
+      <span>|</span><a href="https://www.wandacoach.com/rewards">REWARDS</a>
+      <span>|</span><a href="/blogs/">BLOG</a>
+    </nav>
+  </div>
+</div>
+<!-- Hero -->
+<div class="blog-hero">
+  <p class="eyebrow">Travel Blog</p>
+  <h1>East Coast Bus Travel Guides</h1>
+  <p>Honest, detailed guides for the most popular Chinatown bus routes from New York — schedules, tips, and what to actually expect.</p>
+</div>
+<div class="gold-bar"></div>
+
+<!-- Blog Cards -->
+<div class="blog-grid">
+
+  <a href="/blogs/blog1.html" class="blog-card">
+    <div class="cover"><img src="/blogs/blog1-cover.png" alt="New York to Raleigh Wanda Coach bus"></div>
+    <div class="body">
+      <span class="route-tag">New York → Raleigh, NC</span>
+      <h2>New York to Raleigh Bus: Complete 2026 Guide</h2>
+      <p>Daily departures from 103 Canal Street starting from $80. Schedules, overnight tips, and what to expect on the NY→Raleigh Chinatown bus route.</p>
+      <div class="meta">
+        <div class="stats">
+          <span class="price">From $80</span>
+          <span class="time">~9.5 hrs</span>
+        </div>
+        <span class="cta">Read guide →</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="/blogs/blog2.html" class="blog-card">
+    <div class="cover"><img src="/blogs/blog2-cover.png" alt="New York to Charlotte Wanda Coach bus"></div>
+    <div class="body">
+      <span class="route-tag">New York → Charlotte, NC</span>
+      <h2>New York to Charlotte Bus: Tickets &amp; Schedule 2026</h2>
+      <p>Wanda Coach connects Chinatown to Charlotte from $100 — 10h45m fastest ride with overnight options. The complete booking guide for 2026.</p>
+      <div class="meta">
+        <div class="stats">
+          <span class="price">From $100</span>
+          <span class="time">~10h 45m</span>
+        </div>
+        <span class="cta">Read guide →</span>
+      </div>
+    </div>
+  </a>
+
+  <a href="/blogs/blog3.html" class="blog-card">
+    <div class="cover"><img src="/blogs/blog3-cover.png" alt="New York to Atlanta Wanda Coach bus"></div>
+    <div class="body">
+      <span class="route-tag">New York → Atlanta, GA</span>
+      <h2>New York to Atlanta Bus: Is the Chinatown Route Worth It?</h2>
+      <p>Yes, it's 17–21 hours — but after doing the math on flights and hotels, the overnight Wanda Coach from Canal Street might be the smarter choice.</p>
+      <div class="meta">
+        <div class="stats">
+          <span class="price">From $120</span>
+          <span class="time">17–21 hrs</span>
+        </div>
+        <span class="cta">Read guide →</span>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+<p class="blog-note">Preview build — content pending final review before publishing to wandacoach.com</p>
+
+<!-- Real Wanda Coach Footer -->
+<div class="foot">
+  <div class="footc mglra">
+    <ul>
+      <li>
+        <div class="title">About Us</div>
+        <div class="text">
+          <p class="about">We provide safe and reliable transportation services that focus on the needs of the customers.</p>
+        </div>
+        <div class="free">
+          <a href="https://www.facebook.com/WandaCoach/" target="_blank" class="ifree1 di"></a>
+          <a href="https://twitter.com/WandaCoach1" target="_blank" class="ifree2 di"></a>
+          <a href="https://www.instagram.com/wandacoach/" target="_blank" class="ifree4 di"></a>
+        </div>
+      </li>
+      <li>
+        <div class="title">Menu</div>
+        <div class="text">
+          <p><a href="https://www.wandacoach.com/bus-schedules">Bus Schedules</a></p>
+          <p><a href="https://www.wandacoach.com/bus-stations">Bus Stations</a></p>
+          <p><a href="https://www.wandacoach.com/rewards">Rewards</a></p>
+          <p><a href="https://www.wandacoach.com/faq">FAQ</a></p>
+          <p><a href="/blogs/">Blog</a></p>
+        </div>
+      </li>
+      <li>
+        <div class="title">Have Questions?</div>
+        <div class="text">
+          <p><a class="ftel f24" href="tel:6466307186">646-630-7186</a></p>
+          <p class="mgt10">24/7 dedicated customer support</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="copyright">&copy; 2026 <a href="https://www.wandacoach.com" class="m2">WandaCoach Inc</a>. All rights reserved.</div>
+</div>
+
+<style>
+@media (max-width: 767px) {
+  .header { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; }
+  .wc-mobile-header { display: flex !important; }
+  .wc-cover { height: 220px !important; }
+  .wc-body { padding: 22px 16px 60px !important; }
+  .foot .footc { width: 100% !important; }
+  .foot .footc ul { display: block !important; padding: 0 !important; }
+  .foot .footc ul li { width: 100% !important; padding: 16px 16px 12px !important; border-bottom: 1px solid #3a3a3a; box-sizing: border-box; }
+}
+</style>
+</body>
+</html>

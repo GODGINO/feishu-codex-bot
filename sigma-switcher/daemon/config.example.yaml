@@ -1,0 +1,26 @@
+threshold: 90
+check_interval_seconds: 120
+cooldown_hours: 5
+http_port: 17222
+
+accounts:
+  - email: account1@example.com
+    label: Max-A
+  - email: account2@example.com
+    label: Max-B
+
+imap:
+  host: imap.feishu.cn   # or your IMAP provider
+  port: 993
+  user: your-aggregator@example.com  # receives magic-link emails for all accounts
+  password: <YOUR_IMAP_APP_PASSWORD>  # app password, NEVER your main password
+  poll_interval_seconds: 5
+  poll_timeout_seconds: 120
+  scan_recent: 30   # latest N emails to scan
+  magic_link_regex: 'https://claude\.ai/magic-link#[a-f0-9]+:[A-Za-z0-9+/=]+'
+
+feishu_webhook: ""
+
+paths:
+  state_file: ~/.sigma-switcher/state.json
+  log_file: ~/.sigma-switcher/logs/switcher.log

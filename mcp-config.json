@@ -1,0 +1,39 @@
+{
+  "defaults": {
+    "NPX_PATH": "__NPX_PATH__",
+    "NODE_PATH": "__NODE_PATH__"
+  },
+
+  "sharedMcp": {
+    "feishu-im": {
+      "command": "node",
+      "args": ["{PROJECT_ROOT}/dist/feishu/im-mcp.js"],
+      "env": {
+        "FEISHU_APP_ID": "{FEISHU_APP_ID}",
+        "FEISHU_APP_SECRET": "{FEISHU_APP_SECRET}"
+      }
+    }
+  },
+
+  "isolatedMcp": {
+    "chrome-devtools": {
+      "command": "/bin/bash",
+      "args": [
+        "{PROJECT_ROOT}/scripts/chrome-mcp-wrapper.sh",
+        "{CHROME_PORT}",
+        "{SESSION_DIR}/.chrome-data"
+      ],
+      "env": {
+        "PATH": "{NODE_PATH}:/usr/local/bin:/usr/bin:/bin"
+      }
+    }
+  },
+
+  "sessionMcp": {},
+
+  "sharedSkills": [],
+
+  "sessionSkills": {},
+
+  "sessions": {}
+}
