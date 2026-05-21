@@ -1,4 +1,8 @@
-# Sigma — 飞书 AI 工作流助手
+# Sigma (Codex variant) — 飞书 AI 工作流助手
+
+> ⚠️ **This is the Codex variant of Sigma**, a fork of [feishu-claude-bot](https://github.com/GODGINO/feishu-claude-bot) migrating from Anthropic Claude Code SDK to OpenAI Codex CLI. The migration is in progress — see [MIGRATION_PLAN.md](./MIGRATION_PLAN.md) for the phased plan and current status.
+>
+> For the production Claude-backed version, use the parent repo. This Codex variant runs as a **separate Feishu bot app** sharing the same `sessions/` filesystem with the Claude bot during the parallel period.
 
 把 Claude Code 的完整能力（代码、文件、浏览器、命令执行、键鼠屏控制）桥接到飞书，支持多人/多会话、微信互通、远程设备控制。
 
